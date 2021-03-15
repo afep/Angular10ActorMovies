@@ -12,14 +12,18 @@ import { SearchComponent } from './components/search/search.component';
 /*Angular Material*/
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { ActorMoviesService } from "./services/actor-movies-service";
+import { SortYearPipe } from './pipes/SortYearPipe.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SearchComponent,
+    SortYearPipe
   ],
   imports: [
     BrowserModule,
@@ -29,9 +33,11 @@ import { ActorMoviesService } from "./services/actor-movies-service";
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
     HttpClientModule
   ],
   providers: [ ActorMoviesService ],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

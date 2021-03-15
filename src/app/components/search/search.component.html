@@ -4,9 +4,18 @@
 </mat-form-field>
 
 <ul>
-    <li *ngFor="let movie of movies$ | async">{{ movie.name }}}
-        <ol>
-            <li *ngFor="let subItem of movie.known_for"> {{subItem.title}} </li>
-        </ol>
-    </li>
+    <li *ngFor="let movie of movies$ | async "> {{ movie.name }}
+       <img [src]="'https://www.themoviedb.org/t/p/w180_and_h180_face/'+movie.profile_path" alt="image">
+        <table >
+            <tr>
+                <th *ngFor = "let column of displayedColumns">{{ column }}</th>
+            </tr>
+            
+            <tr *ngFor="let subItem of (movie.known_for|sortyearpipe) "> 
+                <td>{{subItem.title}}</td> 
+                <td>{{subItem.release_date}}</td>
+                <td><img [src]="'https://www.themoviedb.org/t/p/w188_and_h282_bestv2/'+subItem.poster_path" alt="image"> </td>
+            </tr>
+        </table>
+    </li>    
 </ul>
