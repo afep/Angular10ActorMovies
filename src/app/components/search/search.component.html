@@ -1,15 +1,19 @@
 
-<h2>SEARCH MOVIES BY ACTOR</h2>
-
+<h2>SEARCH ACTOR OR ACTRESS MOVIES</h2>
+<h3>Welcome to Alexander Escobar Test page, created to provide a simple option to
+    type the name of the actor or actress and search into "Themoviedb" api to present
+    the list of movies in chronological order.
+</h3>
 <mat-form-field >
-    <mat-label>Actor to search movies</mat-label>
+    <mat-label>Please type a name to search movies</mat-label>
     <input [formControl]="searchControl" matInput placeholder="Search...">
 </mat-form-field>
 
 <ul>
     <li *ngFor="let movie of movies$ | async "> {{ movie.name }}
-       <img [src]="'https://www.themoviedb.org/t/p/w180_and_h180_face/'+movie.profile_path" alt="image">
-        <table >
+       <div><img [src]="'https://www.themoviedb.org/t/p/w180_and_h180_face/'+movie.profile_path" alt="image"></div>
+       <h3>This person is known for:</h3>
+       <table >
             <tr>
                 <th *ngFor = "let column of displayedColumns">{{ column }}</th>
             </tr>
