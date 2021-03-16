@@ -2,12 +2,14 @@
   "name": "angular-movies-search",
   "version": "0.0.0",
   "scripts": {
-    "dev": "react-scripts start",
-    "start": "serve -s build",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "ng": "ng",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "start": "node server.js",
+    "lite": "lite-server",
+    "postinstall": "ng build --prod"
   },
   "private": true,
   "dependencies": {
