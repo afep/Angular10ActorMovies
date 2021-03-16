@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {APP_BASE_HREF} from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app/app.component';
@@ -37,7 +38,7 @@ import { SortYearPipe } from './pipes/SortYearPipe.pipe';
     MatPaginatorModule,
     HttpClientModule
   ],
-  providers: [ ActorMoviesService ],
+  providers: [ ActorMoviesService, {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
