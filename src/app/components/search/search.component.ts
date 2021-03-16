@@ -17,7 +17,7 @@ import {MatTableDataSource} from '@angular/material/table';
 export class SearchComponent {
   searchControl: FormControl;
   movies$: Observable<PeopleData>;
-  displayedColumns: string[] = ['tittle', 'release_date', 'poster'];
+  displayedColumns: string[] = ['TITTLE', 'RELEASE DATE', 'POSTER'];
   /*ELEMENT_DATA: PeopleData[] = [];
    dataSource = new MatTableDataSource<PeopleData>(this.ELEMENT_DATA);*/
   //imagePath$: 'https://www.themoviedb.org/t/p/w180_and_h180_face/';
