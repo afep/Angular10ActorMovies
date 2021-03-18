@@ -9,7 +9,7 @@ app.get('/',function(req,res){
 });*/
 
 app.get('*', function (req, res) {
-    res.sendFile('index.html');
+    res.sendFile(path.resolve(app.get('appPath') + '/index.html'));
   });
 
 app.listen(process.env.PORT || 8080);
