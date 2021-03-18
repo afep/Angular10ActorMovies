@@ -13,6 +13,7 @@ import { SearchComponent } from './components/search/search.component';
 /*Angular Material*/
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 import { ActorMoviesService } from "./services/actor-movies-service";
 import { SortYearPipe } from './pipes/SortYearPipe.pipe';
@@ -36,7 +37,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatButtonModule
   ],
   providers: [ ActorMoviesService, {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [ AppComponent ]

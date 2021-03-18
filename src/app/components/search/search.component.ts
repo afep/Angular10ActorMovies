@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { map, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActorMoviesService } from "../../services/actor-movies-service";
 import { Observable } from 'rxjs';
@@ -17,11 +16,10 @@ export class SearchComponent {
   
   searchControl: FormControl;
   movies$: Observable<Results[]>;
-  displayedColumns: string[] = ['TITTLE', 'RELEASE DATE', 'POSTER'];
+  //displayedColumns: string[] = ['TITTLE', 'RELEASE DATE', 'POSTER'];
 
 
-  constructor(/*private _http: HttpClient,*/
-              private actorMoviesService: ActorMoviesService) { }
+  constructor(private actorMoviesService: ActorMoviesService) { }
 
   ngOnInit() {
     console.log('Metodo onInit');
@@ -37,21 +35,32 @@ export class SearchComponent {
         ),
         map((res:any) => res.results)
       );
-
-    //this.clickFunction();
+  //  this.clickFunction();
   }
 
-  // clickFunction(): Observable<any>
-  // { 
-  //   let URL_SERVICIOS = 'https://api.themoviedb.org/';
-  //   let query: string;
-  //   let page_number= 2;
-  //   let pages$: Observable<Results[]>;
-  //   this.movies$.forEach(function(results) {
-  //     let i = 0;
-  //     console.log('TODOS');
-  //     console.log(results);
-  //     /*Recorrer personas*/
+  cleanFunction(){
+    this.searchControl.setValue("");
+    this.movies$ = this.searchControl.valueChanges
+      .pipe(
+        switchMap(
+          searchString =>  this.actorMoviesService.getMoviesByCriteria("")
+        ),
+        map((res:any) => res.results)
+      );
+      this.ngOnInit();
+  }
+
+  //  clickFunction() 
+  //  { 
+  //    let URL_SERVICIOS = 'https://api.themoviedb.org/';
+  //    let query: string;
+  //    let page_number= 2;
+  //    let pages$: Observable<Results[]>;
+  //    this.movies$.forEach(function(results) {
+  //      let i = 0;
+  //      console.log('TODOS');
+  //      console.log(results);
+       /*Recorrer personas*/
       
   //     for (i=0;  i < results.length; i++)
   //     {
