@@ -13,11 +13,12 @@ import { SearchComponent } from './components/search/search.component';
 /*Angular Material*/
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 import { ActorMoviesService } from "./services/actor-movies-service";
 import { SortYearPipe } from './pipes/SortYearPipe.pipe';
+
+/*Flexbox*/ 
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 
 @NgModule({
@@ -34,9 +35,8 @@ import { SortYearPipe } from './pipes/SortYearPipe.pipe';
     MatInputModule,
     ReactiveFormsModule,
     FormsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
   providers: [ ActorMoviesService, {provide: APP_BASE_HREF, useValue: '/'}],
   bootstrap: [ AppComponent ]

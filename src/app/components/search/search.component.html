@@ -1,28 +1,113 @@
-
-<h2>SEARCH ACTOR OR ACTRESS MOVIES</h2>
-<h3>Welcome to Alexander Escobar test page, created to provide a simple option to
-    type the name of the actor or actress and search into "Themoviedb" api to present
-    the list of movies in chronological order.
-</h3>
-<mat-form-field >
-    <mat-label>Please type a name to search movies</mat-label>
-    <input [formControl]="searchControl" matInput placeholder="Search...">
-</mat-form-field>
-
-<ul>
-    <li *ngFor="let movie of movies$ | async "> {{ movie.name }}
-       <div><img [src]="'https://www.themoviedb.org/t/p/w180_and_h180_face/'+movie.profile_path" alt="image"></div>
-       <h3>This person is known for:</h3>
-       <table >
-            <tr>
-                <th *ngFor = "let column of displayedColumns">{{ column }}</th>
-            </tr>
+<body style="font-family:Verdana;color:#aaaaaa;">
+    
+    
+    <div style="background-color:#4e4cafe7;;padding:15px;text-align:center;">
+        <img [src]="'https://mamediateck.com/images/408x161-powered-by-rectangle-blue.png'"> 
+        <h1>SEARCH ACTOR OR ACTRESS MOVIES</h1>
+    </div>
+    
+    <div style="overflow:auto">
+        <div class="menu">
+            <a >MENU</a>
+            <a href="#">Search</a>
+        </div>
+    
+        <div class="main">
+            <h2>Information</h2>
+            <p style="color:#070707e7;">Welcome to Alexander Escobar test page, created to provide a simple option to
+                type the name of the actor or actress and search into "Themoviedb" api to present
+                the list of movies in chronological order.</p>
+                <mat-form-field >
+                    <mat-label>Please type a name to search movies</mat-label>
+                    <input [formControl]="searchControl" matInput placeholder="Search...">
+                </mat-form-field>
+                           
+                <ul>
+                    
+                    <li *ngFor="let movie of movies$ | async "> Name: {{ movie.name }}
+                    <div class="item item-1" *ngIf="movie.profile_path?.length"><img [src]="'https://www.themoviedb.org/t/p/w180_and_h180_face/'+movie.profile_path" alt="image"></div>
+                    <div class="item item-1" *ngIf="!movie.profile_path?.length"><img [src]="'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0ODQ0NDQ0NDQ0NDQ0NDQ8NDQ0NFREWFhURFRUYHSggGBolGxUVITshJSkrLi4vFx8zODMsNygtLisBCgoKBQUFDgUFDisZExkrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALQAtAMBIgACEQEDEQH/xAAbAAEBAQEAAwEAAAAAAAAAAAAAAQUEAgMGB//EADMQAQACAAMGBAQEBwEAAAAAAAABAgMRIQQFEjFRYTJBcZEiobHRI1KBwRQzQnKi4fAT/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AP2kFBBQAAARQEAFRQBFQFRUAFQFAAAAABFRQAAAAQHjiXisTNpyiPMHkSzMfec8qVy72+zixca9/FaZ7eXsDavtWFXnev6a/R4fx+D+b/GzEAfQYePS3htE9s9XtfNO3ZNvtWcrzNq9ecwDYHpw9pw7TlW0TPTlL3AAAAAAAAACAKAAIAMTbtpnEtpPwxpWP3au234cK89so/XRggAAAAAAsTlr5w3tkxeOlbefKfWGA1dz2+G0dLRPvH+gaAAAgCiAKACAAoAIADk3p/Kn+6rGbe8ozwrdsp+bEAAAAAAAam540v6x9GW190R+HPe0/SAdoKCCgIKAAAgAKIACgPVtMZ4d4n8s/R8+2d6XmMLTzmIn0YwAAAAAADY3TP4cx0tObHdm68TLEy8rRMe2oNgAAUBBQAAARQAAAAcm9Izwp7TE/Nivodow+Olq9YnL1fPzGWk845ggAAAAADq3bGeLXtnPycrS3RheK89OGP3BpggKAAAAAAIoAgCgAOTbtnpNL24Y4ojPPzdb149c6XjrW30B88AAAAADs3bs8Ylpm2sVjl1mWxEREZRGUdIZ+56/Dee8R/3u0AVABQAAAAARUAAAUAEJgTEvFYm08ojMGLtuzf8AnbTwzrX7OZ7cfaL4ninTPOI8oeoAAB5YVJtaKxzmcni8qXmsxMTlMcpBv4GDGHWKx5c+89Xm4N27Xa8zW85zzidI084d4AAKAAAAACKgAACj04200p4rRn0jWXBj7ztOlI4Y6zrINSZy56Mvee1Rb4KznHO0xyns4r4lreK0z6y8AAAAAAAeWFiTW0WjnE5t3A2iuJETExn5xnrDAIB9IMPB23Ep/VnHS2rvwN5Utpb4J94B3CVtExnExMdY1UAAAAEJmI1mco7uHbNv4JmtMptHOfKGZi4trzna0z68ga2NvDDrynjnty93Bj7fiX8+GOlfu5QAAAAAAAAAAAAAAHnhYtqTnW0x6O/A3n5Xr+tfszQH0GFtFL+G0T25T7PY+bdWz7diU5zxV6Tz9wbSvXg41b1i1Z0+cT0QHz8gAAAAAAAAAAAAAAAAAAAAAsWmOUzHpIgAAAAA861zAF4IOCAA4IOCAA4IOCAA4IOCAA4IOCAA4IeExqAIAAAAAD//2Q=='" alt="image"></div>
+                    <h3>This person is known for:</h3>
+                        <div class="container" 
+                            fxLayoutAlign="space-around center" 
+                            fxLayoutGap="1px">
+                            <tr *ngFor="let subItem of (movie.known_for|sortyearpipe) "> 
+                                <div class="item item-1" *ngIf="subItem.poster_path?.length">
+                                    <img [src]="'https://www.themoviedb.org/t/p/w188_and_h282_bestv2/'+subItem.poster_path" alt="image"> 
+                                </div>
+                                <div class="item item-1" *ngIf="!subItem.poster_path?.length">
+                                    <img [src]="'https://lh3.googleusercontent.com/proxy/5c6xn20eukXqR9jvaZutu3S4mGdLYltcq491myrFJ5UY0b3f5pEK3ah3V6ixuD3ukJwcnMDuC8AdgW-eS8TJVM0Ej4br2VB02G6vmosjJ0jq30CI0Jm5QuEB6ZU8uyI_8s9D6CiiSng'" alt="image"> 
+                                </div>
+                                <h6 with=100px><small>Title: {{subItem.title}}</small></h6>
+                                <h6><small>Release date: {{subItem.release_date}}</small></h6>
+                            </tr>
+                            
+                        </div>
+                    </li>    
+                </ul>
+            </div>
+        <div class="right">
+            <h2>About</h2>
+            <p>This page is for testing development code porpouse.</p>
+        </div>
+    </div>
+    
+    <div style="background-color:#4e4cafe7;;text-align:center;padding:10px;margin-top:7px;">© Alexander Felipe Escobar Pérez</div>
+    
+    </body>
+   
+<!-->
+    <div >
+        <h2>SEARCH ACTOR OR ACTRESS MOVIES</h2>
+    </div>
+    <div style="overflow:auto">
+              
+        <div class="main">
+          <h2>Resume</h2>
+          <p>Welcome to Alexander Escobar test page, created to provide a simple option to
+            type the name of the actor or actress and search into "Themoviedb" api to present
+            the list of movies in chronological order.</p>
             
-            <tr *ngFor="let subItem of (movie.known_for|sortyearpipe) "> 
-                <td>{{subItem.title}}</td> 
-                <td>{{subItem.release_date}}</td>
-                <td><img [src]="'https://www.themoviedb.org/t/p/w188_and_h282_bestv2/'+subItem.poster_path" alt="image"> </td>
-            </tr>
-        </table>
-    </li>    
-</ul>
+        </div>
+      
+        <div class="right">
+          <h2>About</h2>
+          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+    </div>
+
+    <div >
+        <h3>Welcome to Alexander Escobar test page, created to provide a simple option to
+            type the name of the actor or actress and search into "Themoviedb" api to present
+            the list of movies in chronological order.
+        </h3>
+
+        <mat-form-field >
+            <mat-label>Please type a name to search movies</mat-label>
+            <input [formControl]="searchControl" matInput placeholder="Search...">
+        </mat-form-field>
+        <div class="container" 
+            fxLayout="column" fxLayoutAlign="space-around center" 
+            fxLayoutGap="10px">
+                <ul>
+                    <li *ngFor="let movie of movies$ | async "> {{ movie.name }}
+                    <div><img [src]="'https://www.themoviedb.org/t/p/w180_and_h180_face/'+movie.profile_path" alt="image"></div>
+                    <h3>This person is known for:</h3>
+                    <table >
+                            <tr>
+                                <th *ngFor = "let column of displayedColumns">{{ column }}</th>
+                            </tr>
+                            
+                            <tr *ngFor="let subItem of (movie.known_for|sortyearpipe) "> 
+                                <div class="item item-3">
+                                    <td>{{subItem.title}}</td> 
+                                    <td>{{subItem.release_date}}</td>
+                                    <td><img [src]="'https://www.themoviedb.org/t/p/w188_and_h282_bestv2/'+subItem.poster_path" alt="image"> </td>
+                                </div>
+                            </tr>
+                        </table>
+                    </li>    
+                </ul>
+        </div>
+    </div>
+</!-->

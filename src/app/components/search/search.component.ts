@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { map, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActorMoviesService } from "../../services/actor-movies-service";
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 
 import { PeopleData } from '../../common/interfaces'
-
-import {MatTableDataSource} from '@angular/material/table';
 
 @Component({
   selector: 'app-search',
@@ -26,15 +24,15 @@ export class SearchComponent {
 
   ngOnInit() {
     console.log('Metodo onInit');
-    
-    this.searchControl = new FormControl();
 
+    this.searchControl = new FormControl();
+    
     this.movies$ = this.searchControl.valueChanges
       .pipe(
         debounceTime(500),
         distinctUntilChanged(),
         switchMap(
-          searchString => this.actorMoviesService.getMoviesByCriteria(searchString)
+          searchString =>  this.actorMoviesService.getMoviesByCriteria(searchString)
         ),
         map((res:any) => res.results)
       );
@@ -47,6 +45,11 @@ export class SearchComponent {
     resp.subscribe(report => this.dataSource.data = report as PeopleData[]);
     console.log(this.ELEMENT_DATA);
   }*/
+
+  clickFunction()
+  { 
+    this.movies$ = EMPTY;
+  }
 }
 
 
