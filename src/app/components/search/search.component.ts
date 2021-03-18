@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { map, switchMap, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { ActorMoviesService } from "../../services/actor-movies-service";
-import { EMPTY, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
-import { PeopleData } from '../../common/interfaces'
+import { Results } from '../../common/interfaces'
 
 @Component({
   selector: 'app-search',
@@ -13,14 +14,14 @@ import { PeopleData } from '../../common/interfaces'
 })
 
 export class SearchComponent {
+  
   searchControl: FormControl;
-  movies$: Observable<PeopleData>;
+  movies$: Observable<Results[]>;
   displayedColumns: string[] = ['TITTLE', 'RELEASE DATE', 'POSTER'];
-  /*ELEMENT_DATA: PeopleData[] = [];
-   dataSource = new MatTableDataSource<PeopleData>(this.ELEMENT_DATA);*/
-  //imagePath$: 'https://www.themoviedb.org/t/p/w180_and_h180_face/';
 
-  constructor(private actorMoviesService: ActorMoviesService) { }
+
+  constructor(/*private _http: HttpClient,*/
+              private actorMoviesService: ActorMoviesService) { }
 
   ngOnInit() {
     console.log('Metodo onInit');
@@ -36,21 +37,41 @@ export class SearchComponent {
         ),
         map((res:any) => res.results)
       );
-    /*this.getElements();*/
+
+    //this.clickFunction();
   }
 
-  /*public getElements(){
-    console.log('Metodo getElements');
-    let resp = this.actorMoviesService.getMoviesByCriteria('John Travolta');
-    resp.subscribe(report => this.dataSource.data = report as PeopleData[]);
-    console.log(this.ELEMENT_DATA);
-  }*/
+  // clickFunction(): Observable<any>
+  // { 
+  //   let URL_SERVICIOS = 'https://api.themoviedb.org/';
+  //   let query: string;
+  //   let page_number= 2;
+  //   let pages$: Observable<Results[]>;
+  //   this.movies$.forEach(function(results) {
+  //     let i = 0;
+  //     console.log('TODOS');
+  //     console.log(results);
+  //     /*Recorrer personas*/
+      
+  //     for (i=0;  i < results.length; i++)
+  //     {
+  //       console.log('uno');
+  //       console.log(results[i].name);  
+  //       query = results[i].name;
+  //       //let url = this.URL_SERVICIOS + `3/search/person?api_key=07ceecc88ea4a1c377aa1a1950e0e784&language=en-US&query=${query}&page=${page_number}&include_adult=false&certification.lte=PG-13,PG,NR`;
+  //       let url = `https://api.themoviedb.org/3/search/person?api_key=07ceecc88ea4a1c377aa1a1950e0e784&language=en-US&query=${query}&page=${page_number}&include_adult=false&certification.lte=PG-13,PG,NR`;
 
-  clickFunction()
-  { 
-    this.movies$ = EMPTY;
-  }
+  //       console.log('URL');
+  //       console.log(url);
+
+  //       pages$ = this._http.get(url).pipe(
+  //       map((resp: any) => {
+  //         console.log('MAS');
+  //         console.log(resp.results);
+  //       return resp;
+  //       }),);
+  //     }
+  //   })
+  //   return null;
+  // }
 }
-
-
-
