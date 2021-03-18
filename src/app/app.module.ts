@@ -40,7 +40,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     FlexLayoutModule,
     MatButtonModule
   ],
-  providers: [ ActorMoviesService, {provide: APP_BASE_HREF, useValue: '/'}],
+  providers: [ ActorMoviesService, {provide: APP_BASE_HREF, useValue: '/index.html'}],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
